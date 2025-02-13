@@ -172,6 +172,9 @@ public class Graph {
      * @param vertexName
      */
     public void DFS(String vertexName) {
+    	String startVertex = vertexName;
+    	LinkedList<Vertex> searchList = new LinkedList<Vertex>();
+    	
     	
     } // of DFS 
     
@@ -182,6 +185,8 @@ public class Graph {
      * @param vertexName
      */
     public void BFS(String vertexName) {
+    	String startVertex = vertexName;
+    	LinkedList<Vertex> searchList = new LinkedList<Vertex>();
     	
     } // of BFS    
     
