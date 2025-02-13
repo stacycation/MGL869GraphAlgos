@@ -78,6 +78,7 @@ public class Graph {
     public Graph() {
         vertices = new LinkedList<Vertex>();
         edges = new LinkedList<Edge>();
+        searchOrder = new LinkedList<Vertex>();
     }
     
 
@@ -143,7 +144,7 @@ public class Graph {
 
      
     /**
-     * Displays the list of vertices and edges
+     * Displays the list of vertices, edges, and search order
      */
     public void display() {
         int i;
@@ -159,6 +160,9 @@ public class Graph {
             ( ( Edge ) edges.get( i ) ).display();
                 
         System.out.println( "******************************************" );
+        System.out.println( "Search Order " );
+        for ( i=0; i<searchOrder.size(); i++ )
+            System.out.printf(searchOrder.get( i ).name + " ");
     } // of display
     
      
@@ -171,11 +175,51 @@ public class Graph {
      * Note that this methods displays each node in the traversal order
      * @param vertexName
      */
+    
+    //Search result
+    public LinkedList<Vertex> searchOrder;
+    
     public void DFS(String vertexName) {
-    	String startVertex = vertexName;
-    	LinkedList<Vertex> searchList = new LinkedList<Vertex>();
+    	Vertex startVertex = findsVertex(vertexName);
+    	int startIndex = vertices.indexOf(startVertex);//stacy i'm here
     	
+    	System.out.println("vertices.size(): " + vertices.size());
     	
+    	for (int i=0; i < vertices.size(); i++) {
+    		/*System.out.println("--------new i--------------------");
+    		System.out.println("i: " + i);
+    		System.out.printf("currentVertex: ");
+    		currentVertex.display();
+    		System.out.println("currentVertex.visited: " + currentVertex.visited);
+    		*/
+    		if (currentVertex.visited == true) {
+    			continue;
+    		} else {
+	    		searchOrder.add(currentVertex);
+	    		currentVertex.visited = true;
+	    		
+
+	    		System.out.printf("searchOrder.get(i):");
+	    		searchOrder.get(i).display();
+	    		System.out.println("searchOrder size: " + searchOrder.size());
+	    		
+	    		for (int j=0; j < currentVertex.neighbors.size(); j++) {
+	    			
+	    			System.out.println("j: " + j);
+	    			System.out.println("currentVertex.neighbors.size(): " + currentVertex.neighbors.size());
+	    			
+	    			Vertex neighborVertex = currentVertex.neighbors.get(j).end;
+	    			searchOrder.add(neighborVertex);
+	    			neighborVertex.visited = true;
+	    			System.out.printf("searchOrder.get(i+j+1):");
+	    			searchOrder.get(i+j+1).display();
+	    			System.out.println("searchOrder size: " + searchOrder.size());
+	    		}
+    		}
+    	}
+    	//System.out.println("index 25: " + searchOrder.get(25));
+    	
+    	System.out.println("-------------end DFS-------------");
     } // of DFS 
     
     
@@ -185,9 +229,7 @@ public class Graph {
      * @param vertexName
      */
     public void BFS(String vertexName) {
-    	String startVertex = vertexName;
-    	LinkedList<Vertex> searchList = new LinkedList<Vertex>();
-    	
+
     } // of BFS    
     
     

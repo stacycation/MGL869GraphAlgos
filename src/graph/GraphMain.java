@@ -126,12 +126,12 @@ public class GraphMain {
         	}
         }
      
-         g.display();
 
          // Call the methods here starting on the starting vertex
          if (BFS) g.BFS(args[1]);
          else g.DFS(args[1]);
-         
+         g.display();
+
          
     } // main
 
