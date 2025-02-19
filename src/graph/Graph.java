@@ -181,17 +181,35 @@ public class Graph {
     
     public void DFS(String vertexName) {
     	Vertex startVertex = findsVertex(vertexName);
+    	//Vertex currentVertex = startVertex;
+    	Vertex currentVertex;
     	int startIndex = vertices.indexOf(startVertex);//stacy i'm here
+    	int currentIndex = startIndex;
+    	
     	
     	System.out.println("vertices.size(): " + vertices.size());
     	
     	for (int i=0; i < vertices.size(); i++) {
-    		/*System.out.println("--------new i--------------------");
+    		System.out.println("--------new i--------------------");
     		System.out.println("i: " + i);
+    		
+    		currentIndex = i;
+    		
+    		System.out.println("currentIndex before adjust: " + currentIndex);
+    		System.out.println("vertices.size(): " + vertices.size());
+    		
+    		if (currentIndex >= vertices.size()) {
+    			currentIndex = i - vertices.size();
+    		}
+    		
+    		System.out.println("currentIndex after adjust: " + currentIndex);
+    		
+    		currentVertex = vertices.get(currentIndex);
+    		
     		System.out.printf("currentVertex: ");
     		currentVertex.display();
     		System.out.println("currentVertex.visited: " + currentVertex.visited);
-    		*/
+    		
     		if (currentVertex.visited == true) {
     			continue;
     		} else {
